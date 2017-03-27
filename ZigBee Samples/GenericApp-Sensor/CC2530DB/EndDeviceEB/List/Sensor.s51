@@ -1,0 +1,599 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.10.3.10338/W32 for 8051        27/Mar/2017  16:47:33 /
+// Copyright 2004-2011 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//    Source file        =  D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\Source\Sensor.c              /
+//    Command line       =  -f D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sa /
+//                          mples\GenericApp-Sensor\CC2530DB\..\..\..\Tools\C /
+//                          C2530DB\f8wEndev.cfg (-DCPU32MHZ                  /
+//                          -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3        /
+//                          -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f         /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\Tools\CC25 /
+//                          30DB\f8wConfig.cfg (-DZIGBEEPRO -DSECURE=0        /
+//                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                 /
+//                          -DDEFAULT_CHANLIST=0x00000800                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFF4E                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DLINK_STATUS_JITTER_MASK=0x007F                  /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3   /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40          /
+//                          -DNWK_MAX_BINDING_ENTRIES=4                       /
+//                          -DMAX_BINDING_CLUSTER_IDS=4                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DMAC_MAX_FRAME_SIZE=116       /
+//                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const    /
+//                          __code" -DGENERIC=__generic                       /
+//                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000       /
+//                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)  /
+//                          -DREJOIN_POLL_RATE=440 D:\IAR\ZStack-CC2530-2.5.1 /
+//                          a\Projects\zstack\Samples\GenericApp-Sensor\Sourc /
+//                          e\Sensor.c -D NWK_AUTO_POLL -D ZTOOL_P1 -D        /
+//                          MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC -D          /
+//                          LCD_SUPPORTED=DEBUG -D xPOWER_SAVING -lC          /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\EndDeviceEB\List\   /
+//                          -lA D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\S /
+//                          amples\GenericApp-Sensor\CC2530DB\EndDeviceEB\Lis /
+//                          t\ --diag_suppress Pe001,Pa010 -o                 /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\EndDeviceEB\Obj\    /
+//                          -e --no_code_motion --debug --core=plain          /
+//                          --dptr=16,1 --data_model=large                    /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 16 -I                           /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\ -I                 /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\Source\ -I       /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\ZMain\TI25 /
+//                          30DB\ -I D:\IAR\ZStack-CC2530-2.5.1a\Projects\zst /
+//                          ack\Samples\GenericApp-Sensor\CC2530DB\..\..\..\. /
+//                          .\..\Components\hal\include\ -I                   /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\hal\target\CC2530EB\ -I                    /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\mac\include\ -I D:\IAR\ZStack-CC2530-2.5.1 /
+//                          a\Projects\zstack\Samples\GenericApp-Sensor\CC253 /
+//                          0DB\..\..\..\..\..\Components\mac\high_level\ -I  /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\mac\low_level\srf04\ -I                    /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\mac\low_level\srf04\single_chip\ -I        /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\mt\ -I D:\IAR\ZStack-CC2530-2.5.1a\Project /
+//                          s\zstack\Samples\GenericApp-Sensor\CC2530DB\..\.. /
+//                          \..\..\..\Components\osal\include\ -I             /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\services\saddr\ -I                         /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\services\sdata\ -I                         /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\stack\af\ -I D:\IAR\ZStack-CC2530-2.5.1a\P /
+//                          rojects\zstack\Samples\GenericApp-Sensor\CC2530DB /
+//                          \..\..\..\..\..\Components\stack\nwk\ -I          /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\stack\sapi\ -I D:\IAR\ZStack-CC2530-2.5.1a /
+//                          \Projects\zstack\Samples\GenericApp-Sensor\CC2530 /
+//                          DB\..\..\..\..\..\Components\stack\sec\ -I        /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\stack\sys\ -I D:\IAR\ZStack-CC2530-2.5.1a\ /
+//                          Projects\zstack\Samples\GenericApp-Sensor\CC2530D /
+//                          B\..\..\..\..\..\Components\stack\zdo\ -I         /
+//                          D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\..\..\..\..\..\Comp /
+//                          onents\zmac\ -I D:\IAR\ZStack-CC2530-2.5.1a\Proje /
+//                          cts\zstack\Samples\GenericApp-Sensor\CC2530DB\..\ /
+//                          ..\..\..\..\Components\zmac\f8w\ -Ohz             /
+//                          --require_prototypes                              /
+//    List file          =  D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Sampl /
+//                          es\GenericApp-Sensor\CC2530DB\EndDeviceEB\List\Se /
+//                          nsor.s51                                          /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME Sensor
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?FLT_ADD
+        EXTERN ?FLT_DIV
+        EXTERN ?FLT_TO_L
+        EXTERN ?L_MOV_X
+        EXTERN ?S_SHL
+        EXTERN ?UL_TO_FLT
+        EXTERN ?V0
+
+        PUBLIC ??ADC_Init11?relay
+        FUNCTION ??ADC_Init11?relay,0203H
+        PUBLIC ??GetTemperature?relay
+        FUNCTION ??GetTemperature?relay,0203H
+        PUBLIC ??Sensor_Init?relay
+        FUNCTION ??Sensor_Init?relay,0203H
+        PUBWEAK ADCCON1
+        PUBWEAK ADCCON3
+        PUBWEAK ADCH
+        PUBWEAK ADCL
+        PUBLIC ADC_Init11
+        FUNCTION ADC_Init11,0203H
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUBLIC GetTemperature
+        FUNCTION GetTemperature,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        PUBLIC Sensor_Init
+        FUNCTION Sensor_Init,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBWEAK __Constant_40200000
+        PUBWEAK __Constant_c0a00000
+        PUBWEAK __Constant_c4aaf000
+        
+        CFI Names cfiNames0
+        CFI StackFrame CFA_SP SP IDATA
+        CFI StackFrame CFA_PSP16 PSP16 XDATA
+        CFI StackFrame CFA_XSP16 XSP16 XDATA
+        CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+        CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+        CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+        CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+        CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+        CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+        CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+        CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+        CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+        CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+        CFI VirtualResource ?RET:24
+        CFI Resource ?BRET_EXT:8
+        CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+        CFI ResourceParts PSP16 PSPH, PSPL
+        CFI ResourceParts XSP16 XSPH, XSPL
+        CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+        CFI EndNames cfiNames0
+        
+        CFI Common cfiCommon0 Using cfiNames0
+        CFI CodeAlign 1
+        CFI DataAlign -1
+        CFI ReturnAddress ?RET CODE
+        CFI CFA_DOVERLAY Used
+        CFI CFA_IOVERLAY Used
+        CFI CFA_SP SP+-3
+        CFI CFA_PSP16 PSP16+0
+        CFI CFA_XSP16 XSP16+0
+        CFI `PSW.CY` SameValue
+        CFI `B.BR0` SameValue
+        CFI `B.BR1` SameValue
+        CFI `B.BR2` SameValue
+        CFI `B.BR3` SameValue
+        CFI `B.BR4` SameValue
+        CFI `B.BR5` SameValue
+        CFI `B.BR6` SameValue
+        CFI `B.BR7` SameValue
+        CFI `VB.BR8` SameValue
+        CFI `VB.BR9` SameValue
+        CFI `VB.BR10` SameValue
+        CFI `VB.BR11` SameValue
+        CFI `VB.BR12` SameValue
+        CFI `VB.BR13` SameValue
+        CFI `VB.BR14` SameValue
+        CFI `VB.BR15` SameValue
+        CFI VB SameValue
+        CFI B Undefined
+        CFI A Undefined
+        CFI PSW SameValue
+        CFI DPL0 SameValue
+        CFI DPH0 SameValue
+        CFI R0 Undefined
+        CFI R1 Undefined
+        CFI R2 Undefined
+        CFI R3 Undefined
+        CFI R4 Undefined
+        CFI R5 Undefined
+        CFI R6 SameValue
+        CFI R7 SameValue
+        CFI V0 SameValue
+        CFI V1 SameValue
+        CFI V2 SameValue
+        CFI V3 SameValue
+        CFI V4 SameValue
+        CFI V5 SameValue
+        CFI V6 SameValue
+        CFI V7 SameValue
+        CFI V8 SameValue
+        CFI V9 SameValue
+        CFI V10 SameValue
+        CFI V11 SameValue
+        CFI V12 SameValue
+        CFI V13 SameValue
+        CFI V14 SameValue
+        CFI V15 SameValue
+        CFI PSPH Undefined
+        CFI PSPL Undefined
+        CFI XSPH Undefined
+        CFI XSPL Undefined
+        CFI ?RET Concat
+        CFI ?BRET_EXT Frame(CFA_SP, 3)
+        CFI ?RET_HIGH Frame(CFA_SP, 2)
+        CFI ?RET_LOW Frame(CFA_SP, 1)
+        CFI EndCommon cfiCommon0
+        
+ADC_Init11          SYMBOL "ADC_Init11"
+??ADC_Init11?relay  SYMBOL "?relay", ADC_Init11
+GetTemperature      SYMBOL "GetTemperature"
+??GetTemperature?relay SYMBOL "?relay", GetTemperature
+Sensor_Init         SYMBOL "Sensor_Init"
+??Sensor_Init?relay SYMBOL "?relay", Sensor_Init
+
+// D:\IAR\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\GenericApp-Sensor\Source\Sensor.c
+//    1 #include "Sensor.h"
+//    2 #include <ioCC2530.h>
+
+        ASEGN SFR_AN:DATA:NOROOT,0b4H
+// unsigned char volatile __sfr ADCCON1
+ADCCON1:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0b6H
+// unsigned char volatile __sfr ADCCON3
+ADCCON3:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0baH
+// unsigned char volatile __sfr ADCL
+ADCL:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0bbH
+// unsigned char volatile __sfr ADCH
+ADCH:
+        DATA8
+        DS 1
+//    3 
+//    4 #if 0
+//    5 
+//    6 #define HAL_ADC_REF_115V 0x00
+//    7 #define HAL_ADC_DEC_256  0x20
+//    8 #define HAL_ADC_CHN_TEMP 0x0e
+//    9 
+//   10 
+//   11 int8 readTemp(void)
+//   12 {
+//   13   static uint16 reference_valtage;
+//   14   static uint8 bCalibrate = TRUE;
+//   15   
+//   16   uint16 value;
+//   17   int8 temp;
+//   18   
+//   19   ATEST = 0x01;    // 使能温度传感器
+//   20   TR0 |= 0x01;     // 连接温度传感器
+//   21   
+//   22   ADCIF = 0;
+//   23   ADCCON3 = (HAL_ADC_REF_115V | HAL_ADC_DEC_256 | HAL_ADC_CHN_TEMP);
+//   24   
+//   25   while(!ADCIF)
+//   26   {
+//   27     ;
+//   28   }
+//   29   ADCIF = 0;
+//   30   value = ADCL;
+//   31   value |= ((uint16)ADCH) << 8;
+//   32   
+//   33   value >>= 4;
+//   34   
+//   35   if (bCalibrate)   // 记录第一次读取的温度值，用于校正温度数据。
+//   36   {
+//   37     reference_valtage = value;
+//   38     bCalibrate = FALSE;
+//   39   }
+//   40   
+//   41   temp = 22 + ((value - reference_valtage)/4);   // 温度校正函数
+//   42   return temp;
+//   43   
+//   44   
+//   45 }
+//   46 #endif
+//   47 
+//   48 #if 1
+//   49 
+//   50 /*********************************************************
+//   51 *  函数名称： Sensor_Init
+//   52 *  功能    ： 初始化 cc2530 内部温度传感器
+//   53 *  参数列表： 无
+//   54 *  返回值  ： 无
+//   55 **********************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   56 void Sensor_Init(void)
+Sensor_Init:
+        CFI Block cfiBlock0 Using cfiCommon0
+        CFI Function Sensor_Init
+        CODE
+//   57 {     
+        PUSH    DPL
+        CFI DPL0 Frame(CFA_SP, 4)
+        CFI CFA_SP SP+-4
+        PUSH    DPH
+        CFI DPH0 Frame(CFA_SP, 5)
+        CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   58     TR0    =   0x01; //连接温度传感器到SOC__ADC；
+        MOV     DPTR,#0x624b
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//   59     ATEST  = 0x01; //选择温度传感器；
+        MOV     DPTR,#0x61bd
+        MOVX    @DPTR,A
+//   60 }
+        POP     DPH
+        CFI DPH0 SameValue
+        CFI CFA_SP SP+-4
+        POP     DPL
+        CFI DPL0 SameValue
+        CFI CFA_SP SP+-3
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock0
+//   61 
+//   62 /*********************************************************
+//   63 *  函数名称： ADC_Init
+//   64 *  功能    ： ADC初始化
+//   65 *  参数列表： 无
+//   66 *  返回值  ： 无
+//   67 **********************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   68 void ADC_Init11(void)
+ADC_Init11:
+        CFI Block cfiBlock1 Using cfiCommon0
+        CFI Function ADC_Init11
+        CODE
+//   69 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//   70    ADCCON3 |=  (0xe << 0) | (0x3 << 4);   //512抽取率，温度传感器；
+        ORL     0xb6,#0x3e
+//   71    ADCCON1 |= (3<<4);   // 手动开启模式；0011 0000
+        ORL     0xb4,#0x30
+//   72    ADCCON1 |= (1<<6);   //1时开启AD转换；  0100 0000
+        ORL     0xb4,#0x40
+//   73 }
+        LJMP    ?BRET
+        CFI EndBlock cfiBlock1
+        REQUIRE ADCCON3
+        REQUIRE ADCCON1
+//   74 
+//   75 /*********************************************************
+//   76 *  函数名称： GetTemperature
+//   77 *  功能    ： 获取芯片内温度值
+//   78 *  参数列表： 无
+//   79 *  返回值  ： 温度值，float 类型
+//   80 **********************************************************/
+//   81 /*float GetTemperature(void)
+//   82 {
+//   83     unsigned int Value; //高4位存放整数部分，低4位存放小数部分；
+//   84     ADC_Init();
+//   85     while(!(ADCCON1 & 0x80)); //等待转换完成；
+//   86     
+//   87     //8bit
+//   88     Value = ADCL>>4;
+//   89     Value |= (((unsigned int)ADCH)<<4);
+//   90 
+//   91     return  (Value-1367.5)/2.5 - 5;  
+//   92 }*/
+//   93 
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   94 uint8 GetTemperature(void)
+GetTemperature:
+        CFI Block cfiBlock2 Using cfiCommon0
+        CFI Function GetTemperature
+        CODE
+//   95 {
+        FUNCALL GetTemperature, ADC_Init11
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+        CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+        CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+        CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+        CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+        CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+        CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+        CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+        CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+        CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+        CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+        CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+        CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+        CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+        CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+        CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+        CFI CFA_SP SP+0
+        CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 0
+//   96     Sensor_Init();
+        MOV     DPTR,#0x624b
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+        MOV     DPTR,#0x61bd
+        MOVX    @DPTR,A
+//   97     ADC_Init11();
+        ; Setup parameters for call to function ADC_Init11
+        LCALL   ??ADC_Init11?relay
+//   98     unsigned int Value; //高4位存放整数部分，低4位存放小数部分；
+//   99     while(!(ADCCON1 & (1<<7))); //等待转换完成；
+??GetTemperature_0:
+        MOV     A,0xb4
+        MOV     C,0xE0 /* A   */.7
+        JNC     ??GetTemperature_0
+//  100     
+//  101     //8bit
+//  102     Value = ADCL>>4;
+        MOV     A,0xba
+//  103     Value |= (((unsigned int)ADCH)<<4);
+//  104 
+//  105     return  (uint8)(Value-1367.5)/2.5 - 5;  
+        SWAP    A
+        ANL     A,#0xf
+        MOV     R2,A
+        MOV     ?V0 + 0,0xbb
+        MOV     ?V0 + 1,#0x0
+        MOV     A,#0x4
+        MOV     R0,#?V0 + 0
+        LCALL   ?S_SHL
+        MOV     A,R2
+        ORL     A,?V0 + 0
+        MOV     ?V0 + 0,A
+        CLR     A
+        MOV     ?V0 + 2,A
+        MOV     ?V0 + 3,A
+        MOV     R0,#?V0 + 0
+        LCALL   ?UL_TO_FLT
+        MOV     DPTR,#__Constant_c4aaf000
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_ADD
+        MOV     R0,#?V0 + 0
+        LCALL   ?FLT_TO_L
+        CLR     A
+        MOV     ?V0 + 1,A
+        MOV     ?V0 + 2,A
+        MOV     ?V0 + 3,A
+        MOV     R0,#?V0 + 0
+        LCALL   ?UL_TO_FLT
+        MOV     DPTR,#__Constant_40200000
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_DIV
+        MOV     DPTR,#__Constant_c0a00000
+        MOV     R0,#?V0 + 4
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V0 + 0
+        MOV     R1,#?V0 + 4
+        LCALL   ?FLT_ADD
+        MOV     R0,#?V0 + 0
+        LCALL   ?FLT_TO_L
+        MOV     R1,?V0 + 0
+        MOV     R7,#0x8
+        LJMP    ?BANKED_LEAVE_XDATA
+        CFI EndBlock cfiBlock2
+        REQUIRE ADCCON1
+        REQUIRE ADCL
+        REQUIRE ADCH
+//  106 }
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_c4aaf000:
+        DD 0C4AAF000H
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_40200000:
+        DD 40200000H
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_c0a00000:
+        DD 0C0A00000H
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??Sensor_Init?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    Sensor_Init
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??ADC_Init11?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    ADC_Init11
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??GetTemperature?relay:
+        LCALL   ?BDISPATCH
+        DATA
+        DC24    GetTemperature
+
+        END
+//  107 
+//  108 #endif
+// 
+// 165 bytes in segment BANKED_CODE
+//  18 bytes in segment BANK_RELAYS
+//   4 bytes in segment SFR_AN
+//  12 bytes in segment XDATA_ROM_C
+// 
+// 183 bytes of CODE  memory
+//   0 bytes of CONST memory (+ 12 bytes shared)
+//   0 bytes of DATA  memory (+  4 bytes shared)
+//
+//Errors: none
+//Warnings: 1
